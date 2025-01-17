@@ -1,0 +1,122 @@
+/* Importing Google Fonts for Lato and Parkinsans with multiple weight variations */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Parkinsans:wght@300..800&display=swap');
+
+/* General body styling for font, spacing, background color, and default text color */
+body {
+    font-family: 'Lato';
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: solid black;
+}
+
+/* Container styling for the main section of the page with a centered layout and card-like appearance */
+.container {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the profile section to align items centrally with no gaps */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    text-align: left;
+}
+
+/* Styling for the profile information section to occupy full width and maintain consistent spacing */
+.profile-info {
+    width: 100%;
+    margin-top: 0px;
+}
+
+/* Labels for input fields with bold text and proper spacing */
+.profile-info label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+/* Input fields with adequate padding, soft border, and responsive background color */
+.profile-info input {
+    width: 96%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f1f1f1;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Disabled input fields with a lighter background color */
+.profile-info input:disabled {
+    background-color: #e9e9e9;
+}
+
+/* Focused input fields with a blue border and white background */
+.profile-info input:focus {
+    border-color: #1674d2;
+    background-color: #fff;
+}
+
+/* Small text elements (e.g., error messages) hidden by default with a red color */
+small {
+    font-size: 12px;
+    color: red;
+    display: none;
+    margin-top: 5px;
+}
+
+/* Button section for arranging buttons with space between them */
+.button-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* Base styling for buttons with padding, rounded corners, and smooth transitions */
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Edit button styling with a blue background and hover effect */
+#editButton {
+    background-color: #1674d2;
+}
+
+#editButton:hover {
+    background-color: #135b98;
+}
+
+/* Save button styling with a green background and hover effect */
+#saveButton {
+    background-color: #0f9400;
+}
+
+#saveButton:hover {
+    background-color: #0b7a00;
+}
+
+/* Disabled save button with a light green background and disabled cursor */
+#saveButton:disabled {
+    background-color: #a9dba9;
+    cursor: not-allowed;
+}
+
+/* Image section with centered alignment and spacing */
+.image-section {
+    text-align: center;
+    margin-bottom: 20px;
+}

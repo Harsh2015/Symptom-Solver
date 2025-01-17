@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic setup for the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Favicon for the page -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon-16x16.png') }}" type="image/png">
+</head>
+
+<body>
+
+    <!-- Main container for the login page -->
+    <div class="container">
+
+        <!-- Left section: Branding or welcome message -->
+        <div class="left-section">
+            <img class="logo" src="./static/images/healthcare.png" alt="Stethoscope Icon">
+            <h4>Welcome Back to Symptom Solver</h4>
+        </div>
+
+        <!-- Right section: Login form and related elements -->
+        <div class="right-section">
+            <h3>Log In, To Get Started</h3>
+
+            <!-- Flash error message for login issues -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div id="error-message" class="error-message">
+                {{ messages[0][1] }}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- Login form -->
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <!-- Input field for email -->
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <!-- Input field for password -->
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <!-- Login button -->
+                <button type="submit" class="login-btn">Log In</button>
+            </form>
+
+            <!-- Sign-up link for new users -->
+            <div class="signup-link">
+                Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Automatically hide the error message after 3 seconds
+        setTimeout(function () {
+            const errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }, 3000); // 3 seconds delay
+    </script>
+</body>
+
+</html>

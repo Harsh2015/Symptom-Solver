@@ -1,0 +1,425 @@
+/* Import Google Fonts for Lato and Parkinsans */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Parkinsans:wght@300..800&display=swap');
+/* Body and Typography Styles */
+body {
+    font-family: 'Lato', 'Parkinsans', sans-serif;
+    background-color: white;
+}
+
+/* Header Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Parkinsans', sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+/* Navbar Styles */
+.navbar-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.ms-2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-brand span {
+    margin-left: 8px;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+    .navbar-brand span {
+        font-size: 1.2rem;
+    }
+    .navbar-logo {
+        height: 30px;
+    }
+    .nav-item {
+        margin-top: 9px;
+    }
+}
+
+/* Hero Section Styles */
+.hero-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.hero-text h1, h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Hero Section Background and Text Colors */
+.hero-section {
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    color: #f8f9fa;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Hero Section Text Adjustments */
+.hero-text h1 {
+    font-size: 3rem;
+    color: #f8f9fa;
+    font-weight: 700;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: #f8f9fa;
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile Adjustments for Hero Section */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .hero-img {
+        width: 100%;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* Media Query for Tablet and Desktop View */
+@media (max-width: 992px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Layout Changes for Hero Section */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 0;
+    }
+    .hero-section .row {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-img {
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+    }
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* Features Section Styles */
+.features-section {
+    padding: 60px 0;
+}
+
+/* Feature Item Styling */
+.feature-item {
+    margin-bottom: 30px;
+}
+
+.feature-img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-img {
+    transform: scale(1.1);
+}
+
+.feature-item h5 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Mobile Adjustments for Features Section */
+@media (max-width: 768px) {
+    .feature-img {
+        width: 80px;
+    }
+    .feature-item {
+        margin-bottom: 20px;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* Blog Section Styles */
+.blog-section {
+    padding: 60px 0;
+}
+
+/* Blog Heading Styling */
+.blog-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Blog Item Link Styling */
+.blog-item h5 a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #007bff;
+    font-weight: normal;
+}
+
+.blog-item h5 a:hover {
+    text-decoration: underline;
+}
+
+/* Blog Item Paragraph Styling */
+.blog-item p {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Media Queries for Blog Section - Responsive Styling */
+@media (max-width: 992px) {
+    .blog-section h2 {
+        font-size: 2rem;
+    }
+    .blog-item h5 a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-section {
+        padding: 40px 0;
+    }
+    .blog-item {
+        margin-bottom: 30px;
+    }
+    .blog-item h5 a {
+        font-size: 1rem;
+    }
+    .blog-item p {
+        font-size: 1rem;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-section {
+        padding: 20px 0;
+    }
+    .blog-section h2 {
+        font-size: 2rem;
+    }
+    .blog-item h5 a {
+        font-size: 0.9rem;
+    }
+    .blog-item p {
+        font-size: 0.85rem;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* FAQ Section Styles */
+.faq-section {
+    padding: 60px 0;
+    background-color: #f5f5f5;
+}
+
+/* Accordion Styling for FAQ Section */
+.accordion .card-header {
+    background-color: transparent;
+    color: black;
+}
+
+.accordion .card-body {
+    background-color: white;
+    color: black;
+}
+
+.accordion .btn-link {
+    font-size: 1.1rem;
+    color: black;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+.accordion .btn-link:focus {
+    outline: none;
+}
+
+.accordion .btn-link.collapsed {
+    color: #007bff;
+}
+
+.accordion .card-body {
+    font-size: 1rem;
+    color: black;
+}
+
+.accordion .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+/* Mobile Adjustments for FAQ Section */
+@media (max-width: 768px) {
+    .accordion .btn-link {
+        font-size: 1rem;
+    }
+    .faq-section {
+        padding: 40px 15px;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* Call to Action (CTA) Banner Styles */
+.cta-banner {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0px 0;
+}
+
+.cta-banner h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cta-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-banner .btn-primary {
+    background-color: #ffffff;
+    color: #2575fc;
+    border: 2px solid #ffffff;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-banner .btn-primary:hover {
+    background-color: #2575fc;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transform: scale(1.05);
+}
+
+/* Mobile Adjustments for CTA Banner */
+@media (max-width: 768px) {
+    .cta-banner {
+        padding: 30px 20px;
+        margin: 0px 0px;
+    }
+    .cta-banner h2 {
+        font-size: 2rem;
+    }
+    .cta-banner p {
+        font-size: 1rem;
+    }
+    .cta-banner .btn-primary {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
+    body {
+        font-family: 'Lato', 'Parkinsans', sans-serif;
+
+    }
+}
+
+/* Footer Styles */
+footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+

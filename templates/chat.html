@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic setup for the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    
+    <!-- Include Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link to custom stylesheet for additional styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <!-- Main container for the chatbot interface -->
+    <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-6 flex flex-col space-y-4">
+        <h1 class="text-2xl font-bold text-center mb-4">Chatbot Assistance</h1>
+
+        <!-- Chat messages container -->
+        <div id="chatMessages" class="flex-1 overflow-y-auto space-y-4 p-4 bg-gray-50 rounded-lg">
+            
+            <!-- Example message to show the bot's initial greeting -->
+            <div class="flex justify-start">
+                <div class="bg-gray-300 text-gray-800 p-3 rounded-lg max-w-xs text-sm shadow">
+                    Hi! What do you need help with?
+                </div>
+            </div>
+        </div>
+
+        <!-- Input form for user messages -->
+        <form id="chatForm" class="flex items-center space-x-4 mt-auto">
+            <!-- Text input for the user's message -->
+            <input
+                type="text"
+                id="prompt"
+                name="prompt"
+                placeholder="Type your message here..."
+                class="flex-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400"
+                required
+            />
+            <!-- Submit button to send the message -->
+            <button
+                type="submit"
+                class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+                Send
+            </button>
+        </form>
+
+        <!-- Loading animation shown while generating a response -->
+        <div id="loadingAnimation" class="flex justify-center items-center mt-4 hidden">
+            <section class="dots-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </section>
+            <span class="ml-2 text-gray-600">Generating response...</span>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file for handling chat logic -->
+    <script src="{{ url_for('static', filename='script/chat.js') }}"></script>
+</body>
+</html>

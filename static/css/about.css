@@ -1,0 +1,128 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Parkinsans:wght@300..800&display=swap');
+
+/* General Styling for Body and Paragraphs */
+body {
+    font-family: 'Lato', 'Parkinsans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #555;
+}
+
+/* About Us Section Styling */
+.about-us {
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Define consistent styling for headings */
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: 'Parkinsans', sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Styling for the descriptive text */
+.about-description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+ /* Arrange team members section styling in a responsive flex layout */
+.team-members {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Card styling for individual team members */
+.team-member {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+}
+
+/* Styling for team member images */
+.team-member img {
+    width: 180px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid black;
+}
+
+/* Styling for team member names */
+.team-member h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Parkinsans', sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Styling for team member details */
+.team-member p {
+    font-size: 16px;
+    color: #555;
+    font-family: 'Parkinsans', sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 28px;
+    }
+
+    .about-description {
+        font-size: 16px;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .team-member h3 {
+        font-size: 20px;
+    }
+
+    .team-member p {
+        font-size: 14px;
+    }
+}

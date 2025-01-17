@@ -1,0 +1,526 @@
+/* Import Google Fonts for Lato and Parkinsans to provide modern and clean typography */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Parkinsans:wght@300..800&display=swap');
+
+/* General Styles for the Body */
+body {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+/* Main content section to handle flexible layouts */
+.main-content {
+  flex: 1;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 20px;
+  background-color: black;
+}
+
+/* Style for the brand/logo section in the navigation */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Resizable logo with spacing for balance */
+.navbar-logo { 
+  width: 45px;
+  height: 45px;
+  margin-right: 12px;
+}
+
+/* Title styling for prominence */
+.navbar-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Style for Small interactive logo/icon */
+.header-logo {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Style for dropdown menu buttons */
+.dropdown-menu button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f7f7f7;
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Navigation Bar Styles */
+nav {
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+  background-color: #1674d2;
+}
+
+nav ul {
+  /* Flexbox layout for menu items */
+  list-style: none;
+  padding: 15px 30px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 15px; 
+}
+
+nav ul li a {
+  /* Links with bold text and smooth hover effect */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #f0f0f0; 
+}
+
+/* Container Styles for Content Wrapping */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+/* Prediction Section Styles */
+.prediction-section {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; 
+}
+
+.symptom-inputs {
+  /* Organized form layout with consistent spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.symptom-row {
+  /* Grid layout for form fields */
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+}
+
+.symptom-row label {
+  /* Bold labels for better visibility */
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.symptom-row select,
+.symptom-row input[type="text"] {
+  /* Styling for input fields */
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.symptom-row select:focus,
+.symptom-row input[type="text"]:focus {
+  /* Highlight effect on focus for better accessibility */
+  border-color: #1674d2;
+  box-shadow: 0 0 5px rgba(22, 116, 210, 0.5);
+  outline: none;
+}
+
+/* General Button Styles */
+.submit-button {
+  /* Eye-catching button with hover and click effects */
+  background-color: #1674d2;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: auto;
+  display: block;
+  margin: 30px auto;
+}
+
+  /* Slight zoom effect and color change for interactivity */
+.submit-button:hover {
+  background-color: #145bb5;
+  transform: scale(1.05);
+}
+
+/* Results Section: Styles for displaying user results with a clear and concise layout */
+.results {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fef4f4;
+  border: 1px solid #ffdcdc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+/* Footer Section: Sticky footer with responsive adjustments for consistent positioning */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Mobile Adjustments: Responsive tweaks for smaller screens to ensure readability */
+@media (max-width: 500px) {
+  .footer {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}
+
+/* Label Styling: Enhances visibility and accessibility of form labels */
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+/* Dropdown Styling: Consistent and accessible styles for dropdown menus */
+select {
+  padding: 8px 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+select:focus {
+  border-color: #007BFF;
+}
+
+/* Button Styling: Primary buttons with hover effects for better interactivity */
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  display: block;
+  max-width: 300px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Antibiotics Result Section: Styled container for displaying detailed information */
+#antibiotics-result {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling: Clean and structured layout for tabular data with hover effects */
+#antibiotics-table .detail {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Heading Styling: Consistent and visually appealing design for section headings */
+h3 {
+  font-size: 1.5em;
+  color: #007BFF;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Centered Container: Aligns content vertically and horizontally for focus */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Note Message: Highlighted message box for additional information */
+.note-message {
+  background-color: #f8f9fa;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Mobile Adjustments for Notes: Ensures text remains legible on small screens */
+@media (max-width: 480px) {
+  .note-message {
+    font-size: 2em;
+    padding: 8px 0;
+  }
+}
+
+/* Media Query for tablets and smaller devices: Adjusts note message style */
+@media (max-width: 768px) {
+  .note-message {
+    font-size: 0.9em;
+    margin-top: 60px;
+  }
+}
+
+/* General mobile adjustments: Adapts layout, font sizes, and paddings for smaller screens */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  select, button {
+    font-size: 0.9em;
+  }
+
+  table {
+    font-size: 0.9em;
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+
+  .footer {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}
+
+/* Mobile-specific layout changes: Enables responsive table and form elements */
+@media (max-width: 480px) {
+  h3 {
+    font-size: 1.2em;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  th, td {
+    font-size: 1em;
+    padding: 12px 15px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+  button, select {
+    width: 100%;
+  }
+}
+
+/* Tablet and small desktop view adjustments: Ensures consistency in UI elements */
+@media (max-width: 1024px) {
+  .navbar-title {
+    font-size: 22px;
+  }
+
+  .symptom-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .submit-button {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+}
+
+/* Mobile view tweaks for header, navbar, and buttons */
+@media (max-width: 768px) {
+  .symptom-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: black;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .content {
+    margin-top: 60px;
+  }
+
+  .submit-button {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 25px;
+    text-align: center;
+  }
+
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-brand {
+    justify-content: center;
+  }
+}
+
+/* Mobile adjustments: Further tweaks for optimal usability on very small screens */
+@media (max-width: 500px) {
+  .symptom-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  .prediction-section {
+    padding: 15px;
+  }
+
+  .navbar-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar-brand {
+    height: auto;
+  }
+
+  .footer {
+    padding: 15px 0;
+  }
+
+  .footer-content p {
+    font-size: 14px;
+  }
+}

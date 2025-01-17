@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic setup for the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Solver</title>
+
+    <!-- Bootstrap CSS for styling the page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons for icons used in the page -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Favicon for the website -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon-16x16.png') }}" type="image/png">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ url_for('static', filename='images/healthcare.png') }}" alt="Logo" class="navbar-logo">
+                <span class="ms-2">Symptom Solver</span>
+            </a>
+
+            <!-- Navbar toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="btn btn-outline-light" href="{{ url_for('login') }}">Login/SignUp</a>
+                    </li>
+                    <li class="nav-item"><a class="btn btn-outline-light" href="{{ url_for('about') }}">About Us</a></li>
+                   
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Hero Content -->
+                <div class="col-md-6 hero-text">
+                    <h1><b>Welcome to Symptom Solver</b></h1>
+                    <p>Your assistant for disease prediction</p>
+                </div>
+                <!-- Hero Image -->
+                <div class="col-md-6 text-center">
+                    <img src="static/images/final.png" class="img-fluid hero-img" alt="Hero Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Why To Choose Us..?</h2>
+            <div class="row">
+                <!-- Feature 1 -->
+                <div class="col-md-4 text-center feature-item">
+                    <img src="static/images/stopwatch.png" alt="Fast Predictions" class="feature-img mb-3">
+                    <h5>Fast Predictions</h5>
+                    <p>Get instant results for your symptom inputs.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="col-md-4 text-center feature-item">
+                    <img src="static/images/accurate.png" alt="Accurate Results" class="feature-img mb-3">
+                    <h5>99% Accurate Results</h5>
+                    <p>Leveraging advanced ML models for precision.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="col-md-4 text-center feature-item">
+                    <img src="static/images/small-talk.png" alt="User Friendly" class="feature-img mb-3">
+                    <h5>User-Friendly</h5>
+                    <p>Easy to use, even for non-technical users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest Articles</h2>
+            <div class="row">
+                <!-- Blog Post 1 -->
+                <div class="col-md-4">
+                    <div class="blog-item">
+                        <h5><a
+                                href="https://www.nature.com/subjects/signs-and-symptoms#:~:text=Signs%20and%20symptoms%20are%20abnormalities,a%20skin%20rash%20or%20lump).">Understanding
+                                Common Symptoms</a></h5>
+                        <p>A brief overview of common symptoms and what they might indicate about your health.</p>
+                    </div>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="col-md-4">
+                    <div class="blog-item">
+                        <h5><a
+                                href="https://www.mayoclinic.org/diseases-conditions/coronavirus/symptoms-causes/syc-20479963">How
+                                to Recognize Early Symptoms of COVID-19</a></h5>
+                        <p>Learn about the early signs of COVID-19 and when to seek medical help.</p>
+                    </div>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="col-md-4">
+                    <div class="blog-item">
+                        <h5><a href="https://www.healthline.com/health/allergies/seasonal-allergies">Seasonal Allergies:
+                                Symptoms and Treatments</a></h5>
+                        <p>Discover the common symptoms of seasonal allergies and how to manage them effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="text-center mb-4">FAQs</h2>
+            <div class="accordion" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How accurate is the prediction?
+                                <i class="bi bi-chevron-down float-end"></i>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="card-body">
+                            Our ML model is based on data from reputable medical datasets, ensuring a high level of
+                            accuracy. However, it should not replace professional medical advice.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Can I trust the results without consulting a doctor?
+                                <i class="bi bi-chevron-down float-end"></i>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="card-body">
+                            The ML model provides a high level of prediction accuracy, but we strongly recommend
+                            consulting a healthcare professional for a proper diagnosis.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How do I input my symptoms for prediction?
+                                <i class="bi bi-chevron-down float-end"></i>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="card-body">
+                            You can input your symptoms using the interactive form on the website, and the ML model will
+                            process them to provide a prediction.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Is this service available in multiple languages?
+                                <i class="bi bi-chevron-down float-end"></i>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#faqAccordion">
+                        <div class="card-body">
+                            Currently, the service is available in English. However, we are working on adding
+                            multi-language support in the near future.
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-banner">
+        <div class="container text-center">
+            <h2 style = "color:yellow;">Take Charge of Your Health Today!</h2>
+            <p class="lead">Discover the power of AI-driven insights to predict and manage health conditions. Get
+                started now!</p>
+            <a href="/login" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid">
+            <p>&copy; 2024 Symptom Solver. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='outer.js') }}"></script>
+
+</body>
+
+</html>

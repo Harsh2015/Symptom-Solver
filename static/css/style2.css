@@ -1,0 +1,228 @@
+/* Importing Google Fonts for Poppins and Urbanist to provide elegant typography with various font weights */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Resetting margin, padding, and setting consistent box-sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the body to center content vertically and horizontally with a pleasant background color */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d6dfe9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* The main container for the layout with a responsive width, rounded corners, and a subtle shadow */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Left section for information and visual elements, styled with a soft background */
+.left-section {
+    flex: 1;
+    background-color: #eef3fc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Header styling in the left section with a blue theme and spacing */
+.left-section h2 {
+    font-size: 24px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    color: #4b7bec;
+}
+
+/* Paragraph text styling in the left section for readability */
+.left-section p {
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Image styling in the left section with responsive dimensions */
+.left-section img {
+    width: 80%;
+    max-width: 150px;
+    margin-top: 20px;
+}
+
+/* Right section for form elements and buttons */
+.right-section {
+    flex: 1.2;
+    padding: 40px;
+}
+
+/* Header styling in the right section to emphasize titles */
+.right-section h3 {
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Social button container for flexibility and spacing */
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Styling individual social buttons with color themes for Google and Facebook */
+.social-buttons button {
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google-btn {
+    background-color: #4285F4;
+    color: #ffffff;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+/* Styling for form groups with labels and input fields */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+/* Additional styling for password input fields to include a toggle icon */
+.form-group input[type="password"] {
+    position: relative;
+}
+
+/* Styling the toggle-password icon */
+.form-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    cursor: pointer;
+}
+
+/* Button for creating accounts with hover effects */
+.create-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #4b7bec;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.create-btn:hover {
+    background-color: #3a6ed4;
+}
+
+/* Styling for the login link with a blue clickable design */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    text-decoration: none;
+    color: #4b7bec;
+}
+
+/* Rounded edges for logos in the layout */
+.logo {
+    border-radius: 5%;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .left-section, .right-section {
+        flex: none;
+        width: 100%;
+    }
+
+    .right-section {
+        padding: 20px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .social-buttons button {
+        margin: 10px 0;
+    }
+
+    .form-group label, .form-group input {
+        font-size: 15px;
+    }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 480px) {
+    .left-section h2 {
+        font-size: 20px;
+    }
+
+    .left-section p {
+        font-size: 12px;
+    }
+
+    .right-section h3 {
+        font-size: 18px;
+    }
+
+    .form-group label, .form-group input {
+        font-size: 15px;
+    }
+
+    .create-btn {
+        font-size: 14px;
+    }
+
+    .login-link {
+        font-size: 12px;
+    }
+}

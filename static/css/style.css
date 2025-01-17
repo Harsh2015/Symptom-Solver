@@ -1,0 +1,237 @@
+/* Importing Google Fonts for Poppins and Urbanist with extensive weight variations */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* General reset for margins, padding, and box-sizing across all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling for the body to center content and apply a background color */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d6dfe9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container styling for a card layout with shadow and rounded edges */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Left section styling for informational content, aligned centrally */
+.left-section {
+    flex: 1;
+    background-color: #eef3fc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Header styling in the left section with blue color and padding */
+.left-section h4 {
+    font-size: 24px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    color: #4b7bec;
+}
+
+/* Paragraph styling in the left section for better readability */
+.left-section p {
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Image styling in the left section with responsive dimensions */
+.left-section img {
+    width: 80%;
+    max-width: 150px;
+    margin-top: 20px;
+}
+
+/* Right section styling for the form and its inputs */
+.right-section {
+    flex: 1.2;
+    padding: 40px;
+}
+
+/* Header in the right section with bold text and spacing */
+.right-section h3 {
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Form group styling to space out input fields and labels */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels for form inputs with consistent font size and spacing */
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Input fields with padding, rounded borders, and responsive design */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+/* Password input fields with additional space for toggling visibility */
+.form-group input[type="password"] {
+    position: relative;
+}
+
+/* Styling for toggle password icon */
+.form-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    cursor: pointer;
+}
+
+/* Button styling for the login button with hover effects */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #4b7bec;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background-color: #3a6ed4;
+}
+
+/* Signup link styling for text and clickable links */
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-link a {
+    text-decoration: none;
+    color: #4b7bec;
+}
+
+/* Responsive styling for tablets and smaller devices */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .right-section {
+        padding: 20px;
+    }
+
+    .left-section, .right-section {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* Logo styling with rounded corners */
+.logo {
+    border-radius: 10%;
+}
+
+/* Error message styling with red text and prominent display */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    top: 220px;
+    left: 60%;
+    transform: translateX(-50%);
+    background-color: #fdd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Responsive styling for smaller screens like phones */
+@media (max-width: 480px) {
+    .left-section h4 {
+        font-size: 17px;
+        margin-top: 10px;
+        color: #4b7bec;
+    }
+
+    .container {
+        margin-top: -70px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .left-section p {
+        font-size: 12px;
+    }
+
+    .right-section h3 {
+        font-size: 18px;
+    }
+
+    .form-group label, .form-group input {
+        font-size: 15px;
+    }
+
+    .login-btn {
+        font-size: 14px;
+    }
+
+    .signup-link {
+        font-size: 12px;
+    }
+
+    .logo {
+        width: 10px;
+        height: 150px;
+        margin-top: 30px;
+    }
+}
+
+/* Error message position adjustment for smaller screens */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fdd;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}

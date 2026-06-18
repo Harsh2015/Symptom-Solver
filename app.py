@@ -1,172 +1,40 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, session, jsonify
-from flask_mysqldb import MySQL
-import bcrypt
-from flask_sqlalchemy import SQLAlchemy
 import pickle
 import numpy as np
 import pandas as pd
 from fuzzywuzzy import process
-from antibiotic import antibiotic_data
-from encoding import *
+from JSON_Datasets.antibiotic import antibiotic_data
+from JSON_Datasets.encoding import *
 import json
-import requests
-from flask_cors import CORS
+from JSON_Datasets.tests import tests_dict
+import os
 
 app = Flask(__name__)
 app.secret_key = '32327dh3hb4h5bh3b4'
 
-#####################  MySQL database connection
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456'
-app.config['MYSQL_DB'] = 'symptom-solver'
+# Base project directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-######## Initializing MySQL and SQLAlchemy for database operations
-mysql = MySQL(app)
-db = SQLAlchemy()
-CORS(app)
+# Load ML Model
+model_path = os.path.join(BASE_DIR, "d_model.pkl")
 
-# Loading a pre-trained Decision Tree (DT) model using pickle
-with open(r"C:\Users\HARSH\Desktop\SymptomSolver\d_model.pkl", 'rb') as model_file:
+with open(model_path, "rb") as model_file:
     model = pickle.load(model_file)
+
+# Load Diet Recommendations JSON
+diet_json_path = os.path.join(
+    BASE_DIR,
+    "JSON_Datasets",
+    "diet_recommendations.json"
+)
+
+with open(diet_json_path, "r", encoding="utf-8") as file:
+    diet_data = json.load(file)
 
 # Rendering the home page template
 @app.route('/')
 def home():
-    return render_template('symptom-solver.html')
-
-
-# Rendering the about page template
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-from flask import flash, redirect, render_template, request, url_for
-
-# Handle user login functionality
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-         # Fetch user details from the database based on the provided email
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT email, password_hash, username FROM users WHERE email = %s", (email,))
-        user = cursor.fetchone()
-        cursor.close()
-
-        if user:
-            db_email, db_password_hash, db_name = user
-
-            # Check if the entered password matches the stored password hash
-            if bcrypt.checkpw(password.encode('utf-8'), db_password_hash.encode('utf-8')):
-
-                # On successful login, store user details in the session
-                session['user_email'] = db_email
-                session['user_name'] = db_name
-                flash('Logout successful!', 'success')
-                return redirect(url_for('dashboard'))
-            else:
-                flash('Invalid credentials, please try again.', 'error')  # Incorrect password message
-        else:
-            flash('Invalid credentials, please try again.', 'error')     # User not found message
-
-    return render_template('login.html')
-
-# Render the user profile page
-@app.route('/user-profile', methods=['GET'])
-def profile():
-    if 'user_email' not in session:
-        return redirect(url_for('login'))
-
-    # Get the email from session to fetch user data
-    user_email = session['user_email']
-    
-    # Get user data from database based on session email
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT username, email, age, location FROM users WHERE email = %s", (user_email,))
-    user_data = cursor.fetchone()
-    cursor.close()
-
-    if user_data:
-        username, email, age, location = user_data
-        return render_template('profile.html', username=username, email=email, age=age, location=location)
-    else:
-        flash('User data not found', 'error')
-        return redirect(url_for('login'))
-
-# Route to update user profile information like age and location
-@app.route('/update-profile', methods=['POST'])
-def update_profile():
-    # Check if the user is logged in by verifying the session
-    if 'user_email' not in session:
-        return redirect(url_for('login')) 
-    
-    user_email = session['user_email']
-    data = request.get_json()
-    
-    # Extract age and location from the JSON data
-    age = data['age']
-    location = data['location']
-
-    # Try updating the user's profile in the database
-    try:
-        cursor = mysql.connection.cursor()
-        cursor.execute(
-            "UPDATE users SET age = %s, location = %s WHERE email = %s",
-            (age, location, user_email)
-        )
-        mysql.connection.commit()
-        cursor.close()
-
-        return jsonify({'status': 'success', 'message': 'Profile updated successfully'})
-
-    except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)})
-
-# Route to handle user signup 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        username = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password']
-
-        # Check if passwords match
-        if password != confirm_password:
-            flash('Passwords do not match!', 'danger')
-            return redirect(url_for('signup'))
-
-        # Hash the password using bcrypt for security
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-        # Try saving the user data in the database
-        try:
-            cursor = mysql.connection.cursor()
-            cursor.execute("INSERT INTO users (email, username, password_hash) VALUES (%s, %s, %s)", 
-                           (email, username, hashed_password))
-            mysql.connection.commit()
-            cursor.close()
-            flash('Account created successfully! You can now log in.', 'success')
-            return redirect(url_for('login'))
-        except Exception as e:
-
-            # If an error occurs, display it to the user
-            flash('An error occurred: ' + str(e), 'danger')
-            return redirect(url_for('signup'))
-
-    return render_template('signup.html')
-
-# Route to display the dashboard, accessible only to logged-in users
-@app.route('/dashboard')
-def dashboard():
-    if 'user_email' not in session:
-        flash('Please log in to access the dashboard.', 'info')
-        return redirect(url_for('login'))
     return render_template('dashboard.html')
-
 
 # Function to encode symptom using fuzzy matching for better accuracy
 def encode_symptom(symptom, column):
@@ -253,48 +121,60 @@ def get_antibiotics():
             'error': 'Disease not found'
         }), 404
 
-# Route to handle user logout
-@app.route('/logout')
-def logout():
-    session.pop('user_email', None)
-    flash('You have been logged out.', 'info')
-    return redirect(url_for('login'))
-
-# Route to handle chatbot interactions
-@app.route('/chat', methods=['GET', 'POST'])
-def chat():
-    # Checks if the user is logged in before allowing access to the chatbot
-    if 'user_email' not in session:
-        flash('Please log in to access chatbot.', 'info')
-        return redirect(url_for('login'))
     
-  
-    if request.method == 'POST':
-        user_prompt = request.form.get('prompt')
-        
-        # If no prompt is provided, return a bad request error (400)
-        if not user_prompt:
-            return jsonify({"error": "No prompt provided"}), 400
-        
-        # Create a template for the API request to the chatbot model
-        template = {
-            "model": "gemma2:2b",
-            "prompt": user_prompt,
-            "stream": False
-        }
+@app.route('/get_diseases', methods=['GET'])
+def get_diseases():
+    """Returns a list of all available diseases."""
+    diseases = list(set(tests_dict.keys()) | set(diet_data.keys()))  # Merge diseases from both sources
+    return jsonify({'diseases': diseases})
 
-        try:
-            # Send the POST request to the local chatbot API
-            res = requests.post('http://127.0.0.1:11434/api/generate', json=template)
-            llm_response = json.loads(res.text)
-            return jsonify({"response": llm_response.get('response', 'No response available')})
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
-    else:
-        return render_template('chat.html')
+@app.route('/get_tests', methods=['POST'])
+def get_tests():
+    """Returns test details, outcomes, and diet/lifestyle recommendations."""
+    data = request.get_json()
+    disease = data.get("Disease")
+
+    if not disease:
+        return jsonify({"error": "No disease provided"}), 400
+
+    # Fetch test details from tests.py
+    disease_info = tests_dict.get(disease, {})
+    tests = disease_info.get("tests", [])
+    outcome = disease_info.get("outcome", "No outcome available.")
+    definition = disease_info.get("definition", {})
+
+    # Ensure test definition are available
+    test_definitions = {test: definition.get(test, "No definition available.") for test in tests}
+
+    # Fetch diet & lifestyle recommendations from JSON
+    recommendations = diet_data.get(disease, {
+        "foods_to_eat": [],
+        "foods_to_avoid": [],
+        "lifestyle_tips": []
+    })
+
+    return jsonify({
+        "tests": tests,
+        "outcome": outcome,
+        "definition": definition,
+        "recommendations": recommendations
+    })
+
+
+@app.route('/get_recommendations', methods=['GET'])
+def get_recommendations():
+    disease = request.args.get('disease')
+    if not disease:
+        return jsonify({"error": "Please provide a disease name"}), 400
+    
+    recommendations = diet_data.get(disease)
+    if not recommendations:
+        return jsonify({"error": "No recommendations found for this disease"}), 404
+    
+    return jsonify(recommendations)
 
 
 
 
 if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0', port=5000)
+  app.run(debug=False, host='0.0.0.0', port=5000)

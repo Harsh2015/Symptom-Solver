@@ -524,3 +524,25 @@ h3 {
     font-size: 14px;
   }
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.about-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.about-btn:hover {
+    background-color: white;
+    color: black;
+}

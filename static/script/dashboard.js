@@ -1,21 +1,3 @@
-// Event listener for logo click to toggle dropdown menu visibility
-document.getElementById('logo').addEventListener('click', function () {
-    const menu = document.getElementById('dropdown-menu');
-
-    // Toggle the display style between 'block' and 'none' to show/hide the menu
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-});
-
-// Event listener to close the dropdown menu when clicking outside of it
-document.addEventListener('click', function (event) {
-    const dropdown = document.getElementById('dropdown-menu');
-    const logo = document.getElementById('logo');
-
-    // If the click is outside the dropdown and not on the logo, hide the dropdown
-    if (!dropdown.contains(event.target) && event.target !== logo) {
-        dropdown.style.display = 'none';
-    }
-});
 
 // Event listener for symptom form submission to predict disease
 document.getElementById('symptom-form').addEventListener('submit', function (event) {

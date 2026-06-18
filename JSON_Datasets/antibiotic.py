@@ -1,12 +1,4 @@
-# import pandas as pd
 
-# data = pd.read_excel(r'C:\Users\HARSH\Desktop\SymptomSolver\antibiotic.xlsx')
-
-# # Convert the dataset into a dictionary grouped by disease
-# data_dict = data.set_index('Disease').T.to_dict()
-
-# # Display the resulting dictionary for use in the Flask app
-# print(data_dict)
 
 antibiotic_data =  {
 
